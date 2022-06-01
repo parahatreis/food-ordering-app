@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet, ScrollView, FlatList } from 'react-native'
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native'
 import React from 'react'
 
 const items = [

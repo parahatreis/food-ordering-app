@@ -25,10 +25,10 @@ export default function SearchBar() {
           // 'details' is provided when fetchDetails = true
           console.log(data, details);
         }}
-        query={{
-          key: "YOUR API KEY",
-          language: "en",
+        onFail={(err) => {
+          console.log('FAIL', err);
         }}
+        query={{ key: "AIzaSyA2lhjA5gLV1lFkmFpZ0PgZnTtOCuin-WE" }}
       />
     </View>
   );
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
       borderRadius: 36,
       flexDirection: "row",
       alignItems: "center",
-      marginRight: 10,
+      // marginRight: 10,
     },
   },
   searchButton: {

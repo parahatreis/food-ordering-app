@@ -1,44 +1,27 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React from 'react'
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import { useNavigation } from '@react-navigation/native';
 
-export const localRestaurants = [
-  {
-    name: "Beachside Bar",
-    image_url:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    categories: ["Cafe", "Bar"],
-    price: "$$",
-    reviews: 1244,
-    rating: 4.5,
-  },
-  {
-    name: "Benihana",
-    image_url:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    categories: ["Cafe", "Bar"],
-    price: "$$",
-    reviews: 1244,
-    rating: 3.7,
-  },
-  {
-    name: "India's Grill",
-    image_url:
-      "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",
-    categories: ["Indian", "Bar"],
-    price: "$$",
-    reviews: 700,
-    rating: 4.9,
-  },
-];
+export default function RestaurantItems({ restaurantData }) {
+  const navigation = useNavigation();
 
-export default function RestaurantItems() {
   return (
     <>
-      {localRestaurants.map((item, index) => (
+      {restaurantData.length > 0 && restaurantData.map((item, index) => (
         <TouchableOpacity
           key={index}
           activeOpacity={1}
+          onPress={() => {
+            navigation.navigate("RestaurantDetails", {
+              name: item.name,
+              image: item.image_url,
+              price: item.price,
+              reviews: item.review_count,
+              rating: item.rating,
+              categories: item.categories,
+            })
+          }}
         >
           <View style={styles.wrapper}>
             <RestaurantImage url={item.image_url} />
