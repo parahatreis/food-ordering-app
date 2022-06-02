@@ -1,8 +1,9 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 import React from 'react'
 import About from '../components/restaurantDetails/About'
 import { Divider } from 'react-native-elements';
 import MenuItems from '../components/restaurantDetails/MenuItems';
+import ViewCart from '../components/restaurantDetails/ViewCart';
 
 const foods = [
   {
@@ -46,10 +47,11 @@ const foods = [
 
 export default function RestaurantDetails({ route }) {
   return (
-    <View>
+    <View style={{ flex: 1, paddingBottom: 50 }}>
       <About />
       <Divider width={1.5} style={{ marginVertical: 20 }} />
       <MenuItems restaurantName={route.params.name} foods={foods} />
+      <ViewCart />
     </View>
   )
 }
